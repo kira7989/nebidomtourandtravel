@@ -4,12 +4,14 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @search = Post.search(params[:q])
-    @posts = @search.result.order("created_at DESC").page(params[:page]) 
+    @posts = @search.result.order("created_at DESC").page(params[:page])
+    @news=Post.where(post_type: "news").order("created_at DESC")
+    @blogs=Post.where(post_type: "blog").order("created_at DESC")
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    @posts = Post.order("created_at DESC").limit(4)
+    @posts = Post.order("created_at DESC").limit(5)
   end
 
   # GET /posts/new

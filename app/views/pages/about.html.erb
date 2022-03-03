@@ -1,227 +1,210 @@
-<div class="hero-wrap js-fullheight" style="background-image: url(<%= asset_path("cover-tour-detail.jpg")%>);">
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-			<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-				<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index-2.html">Home</a></span> <span>About</span></p>
-				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">About Us</h1>
-			</div>
-		</div>
-	</div>
+<!-- Breadcrumbs -->
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">About</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">About</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url(assets/fasil.jpg);"></div>
+  </div>
+</section>
+<!-- Why choose us-->
+<section class="section section-sm section-first bg-default text-md-left">
+  <div class="container">
+    <div class="row row-50 align-items-center justify-content-center justify-content-xl-between">
+      <div class="col-lg-6 text-center wow fadeInUp"><%= image_tag @company_information.medias, style:"hegiht:400px" %>
+      </div>
+      <div class="col-lg-6 wow fadeInRight" data-wow-delay=".1s">
+        <div class="box-width-lg-470">
+          <h3>Why choose Us</h3>
+          <!-- Bootstrap tabs-->
+          <div class="tabs-custom tabs-horizontal tabs-line tabs-line-big tabs-line-style-2 text-center text-md-left" id="tabs-7">
+            <!-- Nav tabs-->
+            <ul class="nav nav-tabs">
+              <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-7-1" data-toggle="tab">Why choose us</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-2" data-toggle="tab">our vision</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-3" data-toggle="tab">Our mission</a></li>
+            </ul>
+            <!-- Tab panes-->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="tabs-7-1">
+                <p><%= @company_information.why_choose_us.html_safe %></p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact">Get in Touch</a></div>
+              </div>
+              <div class="tab-pane fade" id="tabs-7-2">
+                <p><%= @company_information.vision.html_safe %></p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact">Get in Touch</a></div>
+              </div>
+              <div class="tab-pane fade" id="tabs-7-3">
+                <p><%= @company_information.mission.html_safe %></p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact">Get in Touch</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Counters-->
+<!-- Counter Classic-->
+<section class="section section-fluid bg-default ">
+  <div class="parallax-container" data-parallax-img="assets/Lalibela2.jpg">
+    <div class="parallax-content section-xl context-dark bg-overlay-26 parallax" style="background-image:url(<%= asset_path('Lalibela2.jpg') %>);  min-height:50px;">
+      <div class="container">
+        <div class="row row-50 justify-content-center border-classic">
+          <div class="col-sm-6 col-md-5 col-lg-3">
+            <div class="counter-classic">
+              <div class="counter-classic-number"><span class="counter">12</span>
+              </div>
+              <h5 class="counter-classic-title">Awards</h5>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-5 col-lg-3">
+            <div class="counter-classic">
+              <div class="counter-classic-number"><span class="counter">194</span>
+              </div>
+              <h5 class="counter-classic-title">Tours</h5>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-5 col-lg-3">
+            <div class="counter-classic">
+              <div class="counter-classic-number"><span class="counter">2</span><span class="symbol">k</span>
+              </div>
+              <h5 class="counter-classic-title">Travelers</h5>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-5 col-lg-3">
+            <div class="counter-classic">
+              <div class="counter-classic-number"><span class="counter">25</span>
+              </div>
+              <h5 class="counter-classic-title">Team members</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Latest Projects-->
+<section class="section section-sm bg-gray-2">
+  <div class="container">
+    <h3>Our Services</h3>
+    <div class="row row-30">
+      <% @services.each do |service|%>
+        <div class="col-sm-6 col-lg-4">
+          <article class="box-icon-classic">
+            <div class="unit box-icon-classic-body flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left">
+              <div class="unit-left">
+                <div class="box-icon-classic-icon fl-bigmug-line-equalization3"></div>
+              </div>
+              <div class="unit-body">
+                <h5 class="box-icon-classic-title"><%= service.service_name.html_safe  %></h5>
+                <p class="box-icon-classic-text"><%= service.service_description.truncate(256).html_safe %></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>
+<!-- What people Say-->
+<section class="section section-sm section-last bg-default mb-0">
+  <div class="container mb-0">
+    <h3>What People Say</h3>
+  </div>
+</section>
+<div id="carouselExampleControls" class="carousel slide carousel-fade " data-ride="carousel" style="max-height:1000px; " data-interval="2000">
+  <div class="carousel-inner" style=" height:500px;">
+    <%if !@testimonials.nil?%>
+      <div class="carousel-item active parallax" style="background-image: url('<%= asset_path("Lalibela2.jpg")%>'); height:80px;" >
+        <%# <img class="d-block w-100" src="assets/fasil.jpg" alt="First slide" style="max-height:500px; object-fit: cover;"> %>
+        <div class="carousel-caption" data-aos="fade-up" data-aos-delay="400">
+          <article class="quote-lisa">
+            <div class="quote-lisa-body" >
+              <div class="quote-lisa-text" >
+                <p class="q text-dark"><%= @testimonials[0].message.html_safe %></p>
+              </div>
+              <h5 class="quote-lisa-cite"><%= @testimonials[0].full_name.html_safe %></h5>
+            </div>
+          </article>
+        </div>
+      </div>
+      <% @testimonials.drop(1).each do |t|%>
+        <div class="carousel-item parallax" style="background-image: url('<%= asset_path("Lalibela2.jpg")%>'); height:80px;" >
+          <%# <img class="d-block w-100" src="assets/fasil.jpg" alt="First slide" style="max-height:500px; object-fit: cover;"> %>
+          <div class="carousel-caption" data-aos="fade-up" data-aos-delay="400">
+            <article class="quote-lisa">
+              <div class="quote-lisa-body" >
+                <div class="quote-lisa-text" >
+                  <p class="q text-dark"><%= t.message.html_safe %></p>
+                </div>
+                <h5 class="quote-lisa-cite"><%= t.full_name.html_safe %></h5>
+              </div>
+            </article>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-
-
-<section class="ftco-section" id="about">
-	<div class="container">
-		<div class="row d-md-flex">
-			<div class="col-md-6 ftco-animate img about-image" style="background-image: url('<%= asset_path("Lalibela2.jpg")%>');">
-			</div>
-			<div class="col-md-6 ftco-animate p-md-5">
-				<div class="row">
-					<div class="col-md-12 nav-link-wrap mb-5">
-						<div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-							<a class="nav-link active" id="v-pills-whatwedo-tab" data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">About us</a>
-							<a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab" aria-controls="v-pills-mission" aria-selected="false">Our mission</a>
-							<a class="nav-link" id="v-pills-goal-tab" data-toggle="pill" href="#v-pills-goal" role="tab" aria-controls="v-pills-goal" aria-selected="false">Our Vision</a>
-						</div>
-					</div>
-					<div class="col-md-12 d-flex align-items-center">
-						<div class="tab-content ftco-animate" id="v-pills-tabContent">
-							<div class="tab-pane fade show active" id="v-pills-whatwedo" role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
-								<div>
-									<h2 class="mb-4">About Us</h2>
-									<p><%= @company_information.about_us%></p>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
-								<div>
-									<h2 class="mb-4">Our Mission</h2>
-									<p><%= @company_information.mission%></p>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="v-pills-goal" role="tabpanel" aria-labelledby="v-pills-goal-tab">
-								<div>
-									<h2 class="mb-4">Our Vision</h2>
-									<p><%= @company_information.vision%></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!--====------------>
+<section class="section section-sm">
+  <div class="container">
+    <h3 class="title-block find-car oh"><span class="d-inline-block wow slideInUp">Our Partners</span></h3>
+    <div class="row row-30 justify-content-center box-ordered">
+      <% @partners.each do |partner|%>
+        <div class="col-sm-6 col-md-5 col-lg-3">
+          <!-- Team Modern-->
+          <article class="team-modern">
+            <div class="team-modern-header"><a class="team-modern-figure" href="#"><%= image_tag partner.image,class:"img-circles", style:"height:118; width:118;"  %></a>
+              <svg x="0px" y="0px" width="270px" height="70px" viewbox="0 0 270 70" enable-background="new 0 0 270 70" xml:space="preserve">
+                <g>
+                  <path fill="#161616" d="M202.085,0C193.477,28.912,166.708,50,135,50S76.523,28.912,67.915,0H0v70h270V0H202.085z"></path>
+                </g>
+              </svg>
+            </div>
+            <div class="team-modern-caption">
+              <h6 class="team-modern-name"><a href="#"><%= partner.partner_name.html_safe %></a></h6>
+            </div>
+          </article>
+        </div>
+      <%end%>
+    </div>
+  </div>
 </section>
+<section id="faq" class="faq">
+  <div class="container " data-aos="fade-up">
 
-<section class="ftco-section services-section bg-light">
-	<div class="container">
-		<div class="row d-flex">
-			<div class="col-md-12 mb-4">
-				<span class="subheading">Services</span>
-				<h2 class="mb-2 pb-3"><strong>Our</strong> Services</h2>
-			</div>
-			<% @services.each do |service|%>
-				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services d-block text-center">
-						<!-- <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-service"></span></div></div> -->
-						<div class="media-body mt-2">
-							<h3 class="heading mb-3"><%= service.service_name%></h3>
-							<p><%= service.service_description%></p>
-						</div>
-					</div>
-				</div>
-			<%end%>
-		</div>
-	</div>
-</section>
-<section class="brand-area">
- 	<div class="container">
-		
- 		<div class="row logo-wrap">
- 			<div class="col-md-12 heading-section ftco-animate">
-				<span class="subheading">partners</span>
-				<h2 class="mb-4 pb-3"><strong>Our</strong> Partners</h2>
-			</div>
-			<%@partners.each do |pa|%>
-				<a class="col single-img" href="#">
-			 		<%= image_tag(pa.image,size: "100x100",title: pa.partner_name ,alt: pa.partner_name,class: "d-block mx-auto") %>
-			 	</a>
-		 	<%end%>
- 		</div>
- 	</div>
-</section>
+    <div class="section-title">
+      <h3>Frequently Asked Questions</h3>
+    </div>
 
-<section class="ftco-section testimony-section bg-light">
-	<div class="container">
-		<div class="row justify-content-start">
-			<div class="col-md-5 heading-section ftco-animate">
-				<span class="subheading">Best Customer Service</span>
-				<h2 class="mb-4 pb-3"><strong>Why</strong> Choose Us?</h2>
-				<p><%= @company_information.why_choose_us%></p>
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-6 heading-section ftco-animate">
-				<span class="subheading">Testimony</span>
-				<h2 class="mb-4 pb-3"><strong>Our</strong> Guests Says</h2>
-				<div class="row ftco-animate">
-					<div class="col-md-12">
-						<div class="carousel-testimony owl-carousel">
-							<%@testimonials.each do |t|%>
-								<div class="item">
-									<div class="testimony-wrap d-flex">
-										<div class="user-img mb-5" style="background-image: url('<%= asset_path("Profile.png")%>')">
-											<span class="quote d-flex align-items-center justify-content-center">
-												<i class="icon-quote-left"></i>
-											</span>
-										</div>
-										<div class="text ml-md-4">
-											<p class="mb-5"><%= t.message%></p>
-											<p class="name"><%= t.full_name%></p>
-											<!-- <span class="position">Guest from italy</span> -->
-										</div>
-									</div>
-								</div>
-							<%end%>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <ul class="faq-list mt-3 text-center" data-aos="fade-up">
+      <% @faq.each do |c, i|%>
+        <li>
+        <a data-toggle="collapse" class="collapsed" href="#faq1<%= c.id %>"><%= c.question%>? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+        <div id="faq1<%= c.id %>" class="collapse" data-parent=".faq-list">
+          <p>
+          <%= c.answer%>
+          </p>
+        </div>
+      </li>
+    <% end %>
 
-<section class="ftco-section contact-section ftco-degree-bg" id="contact">
-	<div class="container">
-		<div class="row d-flex mb-5 contact-info">
-			<div class="col-md-12 mb-4">
-				<h2 class="h4">Contact Information</h2>
-			</div>
-			<div class="w-100"></div>
-			<div class="col-md-3">
-				<p><span>Address:</span> <%= @company_information.address%></p>
-				<p><span>Address 2:</span> <%= @company_information.alternative_address%></p>
-			</div>
-			<div class="col-md-3">
-				<p><span>Phone number:</span> <a href="tel://<%= @company_information.phone_number%>"><%= @company_information.phone_number%></p>
-					<p><span>Phone number 2:</span> <a href="tel://<%= @company_information.alternative_phone_number%>"><%= @company_information.alternative_phone_number%></a></p>
-				</div>
-				<div class="col-md-3">
-					<p><span>Email:</span> <span><%= @company_information.email%></span></p>
-				</div>
-				<div class="col-md-3">
-					<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-						<li class="ftco-animate"><a href="https://<%= @company_information.youtube_link%>"><span class="icon-youtube"></span></a></li>
-						<li class="ftco-animate"><a href="https://<%= @company_information.facebook_link%>"><span class="icon-facebook"></span></a></li>
-						<li class="ftco-animate"><a href="https://<%= @company_information.instagram_link%>"><span class="icon-instagram"></span></a></li>
-					</ul>
-				</div>
+    </ul>
 
-			</div>
-			<div class="row block-9">
-				<div class="col-md-6 pr-md-5">
-					<%= form_for(Contact.new, url: pages_path, method: "post") do |f|%>
-					<div class="form-group">
-						<%= f.text_field :full_name, class: "form-control", placeholder: "Full Name *",required: true %>
-					</div>
-					<div class="form-group">
-						<%= f.text_field :email, class: "form-control", placeholder: "Email *",required: true %>
-					</div>
-					<div class="form-group">
-						<%= f.text_field :phone_number, class: "form-control", placeholder: "Phone Number" %>
-					</div>
-					<div class="form-group">
-						<%= f.text_field :subject, class: "form-control", placeholder: "Subject",required: true %>
-					</div>
-					<div class="form-group">
-						<select name="contact[comment_type]" id="user_sex" class="form-control custom-select custom-select-lg mb-3">
-							<option selected>Type Of Message</option>
-							<option value="Testimonial">Testimonial</option>
-							<option value="Comment">Comment</option>
-							<option value="Question">Question</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<%= f.text_area :message ,cols: 30, rows: 7, class: "form-control", placeholder: "Message..."%>
-					</div>
-					<div class="form-group">
-						<%= f.submit 'Send Message ', class: "btn btn-primary py-3 px-5" %>
-					</div>
-					<%end%>
-				</div>
-				<div class="col-md-6" id="map"><%= @company_information.map_embed_link.html_safe%></div>
-			</div>
-		</div>
-</section>
-
-	<section class="ftco-section bg-light">
-		<div class="container">
-			<div class="row justify-content-start mb-5 pb-3">
-				<div class="col-md-7 heading-section ftco-animate">
-					<span class="subheading">FAQS</span>
-					<h2 class="mb-4"><strong>Frequently</strong> Ask Question</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 ftco-animate">
-					<div id="accordion">
-						<div class="row">
-							<% @faq.each do |faq|%>
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header">
-										<a class="card-link" data-toggle="collapse" href="#menuone" aria-expanded="true" aria-controls="menuone"><%= faq.question%>?<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-									</div>
-									<div id="menuone" class="collapse show">
-										<div class="card-body">
-											<p><%= faq.answer%></p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<%end%>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  </div>
+<!------------------>

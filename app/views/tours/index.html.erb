@@ -1,24 +1,25 @@
 <%provide :title, "Tours"%>
-
 <% [:info, :error].each do |key| %>
   <% if flash[key] %>
-  <div class="<%= key %>" id="flash">
-    <%= flash[key] %>
-  </div>
+    <div class="<%= key %>" id="flash">
+      <%= flash[key] %>
+    </div>
   <% end %>
 <% end %>
-<div class="hero-wrap js-fullheight" style="background-image: url('<%= asset_path("bale2.jpg")%>');">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-        
-        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Our Tours</h1>
-      </div>
+<!-- Breadcrumbs -->
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">Our Tours</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Our Tours</li>
+      </ul>
     </div>
+    <div class="box-position" style="background-image: url(assets/Bale.jpg);"></div>
   </div>
-</div>
-<section class="ftco-section ftco-degree-bg">
+</section>
+<div class="site-section">
   <div class="container">
     <!-- <div class="row">
       <div class="col-lg-3 sidebar ftco-animate">
@@ -100,54 +101,101 @@
         </form>
       </div>
     </div> -->
-    <div class="col-lg-12">
+    <div class="container mt-5">
+      <h2>Featured Tours</h2>
       <div class="row">
-        <% @tours.each do |tour|%>
-          <div class="col-md-4  ftco-animate">
-            <div class="destination">
-              <%= link_to tour_path(tour), class: "img img-2 d-flex justify-content-center align-items-center", style: "background-image: url(#{rails_blob_url(tour.medias[0])});" do%>
-              <%end%>
-              </a>
-              <div class="text p-3">
-                <div class="d-flex">
-                  <div class="one">
-                    <h3><%= link_to tour.tour_title, tour_path(tour)%></h3>
-                    <p class="rate">
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star"></i>
-                      <i class="icon-star-o"></i>
-                      <span>4 Rating</span>
-                    </p>
+        <%@featured_tours.each do |tour|%>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+          <div class="card ">
+            <a  class="unit-1 text-center">
+              <% if tour.medias.attached? %>
+                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active"> 
+                      <%= image_tag tour.medias[0], :class => "img-fluid" %>
+                    </div>
+                    <% tour.medias.drop(1).each do |illustration| %>
+                      <div class="carousel-item">
+                        <%= image_tag(illustration, :class => "img-fluid") %>
+                      </div>
+                    <%end%>
                   </div>
-                  <!-- <div class="two">
-                    <span class="price">$200</span>
-                  </div> -->
                 </div>
-                <p class="font-weight-bold"><span><i class="icon-map-o"></i> <%= tour.destination.city%>, <%= tour.destination.country%></span></p>
-                <p><%= tour.desciption%></p>
-                <p class="days"><span><%= tour.tour_duration%></span></p>
-                <hr>
-                <p class="bottom-area d-flex">
-                  <span  class="font-weight-bold"><%= tour.tour_price_range%></span>
-                  <span class="ml-auto"><%= link_to "Book Now", tour_path(tour), class: "btn"%></span>
-                </p>
+              <%end%>
+            </a>
+            <div class="text p-2">
+              <div class="d-flex">
+                <div class="one">
+                  <h3 class="card-title text-capitalize"><%= link_to tour.tour_title, tour_path(tour)%></h3>
+                  <div class="group-sm group-middle justify-content-start mt-0">
+                                    <p class="font-weight-bold mt-0"><span><i class="icon-map-o"></i> <%= tour.destination.city.html_safe%>, <%= tour.destination.country.html_safe%></span></p>
+
+                    <div class="product-big-rating "><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div>
+                    <a class="product-big-reviews" href="#"><%= Random.rand(50...100) %> customer reviews</a>
+                  </div>
+                </div>
               </div>
+              <p class="mt-1"><%= tour.desciption.truncate(256).html_safe%></p>
+              <p class="days"><span><%= tour.tour_duration.html_safe%></span></p>
+              <hr>
+              <p class="bottom-area d-flex ">
+                <%# <div class="text-muted bg-transparent"> %>
+                <span  class="font-weight-bold btn">$<%= tour.tour_price_range.html_safe%></span>
+                <span class="ml-auto "><%= link_to "Book Now", tour_path(tour), class: "btn"%></span>
+                <%# </div> %>
+              </p>
+            </div>
             </div>
           </div>
         <%end%>
-       
       </div>
-      <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <%= paginate @tours %> 
-            <%= page_entries_info @tours %>
+    </div>
+    <div class="container mt-5 ">
+      <h2>Other Tours</h2>
+      <div class="row">
+        <%@other_tours.each do |tour|%>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+          <div class="card">
+            <a class="unit-1 text-center">
+              <% if tour.medias.attached? %>
+                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <%= image_tag tour.medias[0], :class => "img-fluid" %>
+                    </div>
+                    <% tour.medias.drop(1).each do |illustration| %>
+                      <div class="carousel-item">
+                        <%= image_tag(illustration, :class => "img-fluid") %>
+                      </div>
+                    <%end%>
+                  </div>
+                </div>
+              <%end%>
+            </a>
+            <div class="text p-3">
+              <div class="d-flex">
+                <div class="one">
+                  <h3 class="card-title text-capitalize"><%= link_to tour.tour_title, tour_path(tour)%></h3>
+                  <div class="group-sm group-middle justify-content-start mt-0">
+                                    <p class="font-weight-bold mt-0"><span><i class="icon-map-o"></i> <%= tour.destination.city.html_safe%>, <%= tour.destination.country.html_safe%></span></p>
+
+                    <div class="product-big-rating "><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div>
+                    <a class="product-big-reviews" href="#"><%= Random.rand(50...100) %> customer reviews</a>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-1"><%= tour.desciption.truncate(256).html_safe%></p>
+            <p class="days"><span><%= tour.tour_duration.html_safe%></span></p>
+            <hr>
+            <p class="bottom-area d-flex">
+              <span  class="font-weight-bold btn">$<%= tour.tour_price_range.html_safe%></span>
+              <span class="ml-auto"><%= link_to "Book Now", tour_path(tour), class: "btn"%></span>
+            </p>
+          </div>
           </div>
         </div>
-      </div>
-    </div> 
+      <%end%>
+    </div>
   </div>
 </div>
-</section> 
+</div>

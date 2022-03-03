@@ -36,6 +36,9 @@ gem 'country_select', '~> 4.0'
 gem 'active_storage_drag_and_drop', '~> 1.1'
 gem 'image_processing'
 gem 'cloudinary'
+gem "font-awesome-rails" 
+gem 'material_icons'
+gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

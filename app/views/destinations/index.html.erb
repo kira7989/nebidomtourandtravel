@@ -1,18 +1,67 @@
 <%provide :title, "Destination"%>
-<div class="hero-wrap js-fullheight" style="background-image: url('<%= asset_path("bale2.jpg")%>');">
-  <div class="overlay"></div>
+<!-- Breadcrumbs -->
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">Destinations</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Destinations</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url(assets/lalibela2.jpg);"></div>
+  </div>
+</section>
+<div class="site-section">
+  <!--==================---->
+  <!--==================---->
   <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-      <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-        
-        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Our Destinations</h1>
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center">
+        <h2 class="font-weight-light text-black">Our Destinations</h2>
+        <p class="color-black-opacity-5">Choose Your Next Destination</p>
+      </div>
+    </div>
+    <div class="row">
+      <%@destinations.each do |destination|%>
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 p-3">
+        <div class="card ">
+          <a href="#" class="unit-1 text-center">
+            <% if destination.medias.attached? %>
+              <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel" style="height:400px; ">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <%= image_tag destination.medias[0], :class => "img-fluid", style:"height:400px;" %>
+                  </div>
+                  <% destination.medias.drop(1).each do |illustration| %>
+                    <div class="carousel-item">
+                      <%= image_tag(illustration, :class => "img-fluid", style:"height:400px;") %>
+                    </div>
+                  <%end%>
+                </div>
+              </div>
+            <%end%>
+          </a>
+          <div class="text p-3">
+            <h3><a href="#"><%= link_to destination.destination_name, destination_path(destination)%>, <%= destination.country%></a></h3>
+            <span class="listing"><%= destination.tours.count%> Listed Tours</span>
+          </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <%= paginate @destinations %>
+          <%= page_entries_info @destinations %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<section class="ftco-section ftco-degree-bg">
-  <div class="container">
-    <!-- <div class="row">
+<!-- <div class="container">
+     <div class="row">
       <div class="col-lg-3 sidebar ftco-animate">
         <div class="sidebar-wrap bg-light ftco-animate">
           <h3 class="heading mb-4">Find City</h3>
@@ -91,7 +140,7 @@
           </div>
         </form>
       </div>
-    </div> -->
+    </div> 
     <div class="col-lg-12">
       <div class="row">
         <% @destinations.each do |destination|%>
@@ -121,5 +170,5 @@
       </div>
     </div> 
   </div>
-</div>
-</section> 
+</div>-->
+</section>

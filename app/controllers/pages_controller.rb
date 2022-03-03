@@ -4,9 +4,10 @@ class PagesController < ApplicationController
   	@services = Service.all
   	@destinations = Destination.all
   	@tours = Tour.all
+    @home_tour=Tour.where(tour_display_on_homepage_priority: "High").limit(3)
   	@packages = Package.all
   	@testimonials = Contact.where(comment_type: "Testimonial").limit(4).order('created_at DESC')
-    @posts = Post.limit(4).order('created_at DESC')
+    @posts = Post.limit(3).order('created_at DESC')
     @partners = Partner.all.limit(4)
     @faq = FrequentlyAskedQuestion.limit(6).order('created_at DESC')
   end

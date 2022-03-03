@@ -1,62 +1,87 @@
-<footer class="ftco-footer ftco-bg-dark ftco-section">
+      
+<footer class="section footer-corporate context-dark">
+  <div class="footer-corporate-inset">
     <div class="container">
-      <div class="row mb-5">
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2"><%= CompanyInformation.first.company_name%></h2>
-            <p style="font-size: 0.9em;"><%= CompanyInformation.first.company_name%> is an exclusive private tour company based in Addis Ababa, Ethiopia. With a squad of experienced professionals , we afford the best vacation holidays in Ethiopia. We have the widest choices of well designed tour packages for groups and individuals throughout Ethiopia. Our package tours include: cultural tours, historical tours, festival tours, adventure tours, wildlife safari, trekking, business in Ethiopia, bird watching, car rental and so much more..</p>
-            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-              <li class="ftco-animate"><a href="https://<%= CompanyInformation.first.youtube_link%>%>"><span class="icon-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="https://<%= CompanyInformation.first.facebook_link%>"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="https://<%= CompanyInformation.first.instagram_link%>"><span class="icon-instagram"></span></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4 ml-md-5">
-            <h2 class="ftco-heading-2">Information</h2>
-            <ul class="list-unstyled">
-              <li><%= link_to "About", about_path, class: "py-2 d-block"%></li>
-
-              <li><%= link_to "Service", about_path, class: "py-2 d-block"%></li>
-              <li><a href="#" class="py-2 d-block">Terms and Conditions</a></li>
-              <li><a href="#" class="py-2 d-block">Become a partner</a></li>
-              <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-              <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Customer Support</h2>
-            <ul class="list-unstyled">
-              <li><%= link_to "FAQ", about_path, class: "py-2 d-block"%></li>
-              <li><%= link_to "Partners", about_path, class: "py-2 d-block"%></li>
-              <li><%= link_to "Book Tours", tours_path, class: "py-2 d-block"%></li>
-              <li><%= link_to "Destinations", destinations_path, class: "py-2 d-block"%></li>
-              <li><%= link_to "Contact us", contact_path, class: "py-2 d-block"%></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Have a Questions?</h2>
-            <div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text"><%= CompanyInformation.first.address%></span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text"><%= CompanyInformation.first.phone_number%> </span></a></li>
-                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"><%= CompanyInformation.first.email%></span></a></li>
+      <div class="row row-40 justify-content-lg-between">
+        <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInRight" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">Contact us</h6>
+              <ul class="footer-contacts d-inline-block d-sm-block">
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-phone"></span></div>
+                    <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-envelope"></span></div>
+                    <div class="unit-body"><a class="link-aemail" href="mailto:#">info@demolink.org</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="unit">
+                    <div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
+                    <div class="unit-body"><a class="link-location" href="#">4730 Crystal Springs Dr, Los Angeles, CA 90027</a></div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>
-            Copyright &copy; <%= Time.now.year%> All rights reserved by<a href="https://nebidomtourandtravel.com/" target="_blank">Nebidom tour and travel</a>
-          </p>
+        <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInDown" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">Our Services</h6>
+              <!-- Post Minimal 2-->
+              <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-1">
+                <% Service.all.each do |service|%>
+                  <li><a href="about.html"><%= service.service_name.html_safe %></a></li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
+          <div class="oh-desktop">
+            <div class="wow slideInLeft" data-wow-delay="0s">
+              <h6 class="text-spacing-100 text-uppercase">Quick links</h6>
+              <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
+                <li><a href="/about">About us</a></li>
+                <li><a href="/tours">Our Tours</a></li>
+                <li><a href="/posts">Our Posts</a></li>
+                <li><a href="/destinations">Our Destinations</a></li>
+              </ul>
+              <div class="group-md group-middle justify-content-sm-start"><a class="button button-lg button-primary button-ujarak" href="/contact">Get in touch</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+  <div class="footer-corporate-bottom-panel">
+    <div class="container">
+      <div class="row justfy-content-xl-space-berween row-10 align-items-md-center2">
+        <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+          <div>
+            <ul class="list-inline list-inline-sm footer-social-list-2">
+              <li><a class="icon fa fa-facebook" href="<%= CompanyInformation.first.facebook_link %>"></a></li>
+              <li><a class="icon fa fa-telegram" href="<%= CompanyInformation.first.telegram_link %>"></a></li>
+              <li><a class="icon fa fa-youtube" href="<%= CompanyInformation.first.youtube_link %>"></a></li>
+              <li><a class="icon fa fa-instagram" href="<%= CompanyInformation.first.instagram_link %>"></a></li>
+                            <li><a class="icon fa fa-whatsapp" href="<%= CompanyInformation.first.whatsapp_link %>"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 order-sm-first">
+          <!-- Rights-->
+          <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Nebidom Tour and Travel</span>. All Rights Reserved.<br> Design by <%= link_to "Yesu IT Solution PLC", "https://yesuitsolution.com/"%></p>
+        </div>
+        <div class="col-sm-6 col-md-4 text-md-right">
+          <p class="rights"><a href="#">Privacy Policy</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

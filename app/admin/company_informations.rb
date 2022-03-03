@@ -1,6 +1,6 @@
 ActiveAdmin.register CompanyInformation do
 
-  permit_params :company_name,:about_us,:mission,:vision,:facebook_link,:tiktok_link,:instagram_link,:youtube_link,:telegram_link,:whatsapp_link,:address,:alternative_address,:phone_number,:alternative_phone_number,:map_embed_link,:email,:why_choose_us
+  permit_params :company_name,:about_us,:mission,:vision,:facebook_link,:tiktok_link,:instagram_link,:youtube_link,:telegram_link,:whatsapp_link,:address,:alternative_address,:phone_number,:alternative_phone_number,:map_embed_link,:email,:why_choose_us, :medias
   
   # actions :index, :show, :update, :edit
   index do
@@ -39,6 +39,21 @@ ActiveAdmin.register CompanyInformation do
       f.input :telegram_link
       f.input :whatsapp_link
     end
+    div class: "file-upload" do
+      f.drag_and_drop_file_field :medias
+    end
+    if f.object.medias.attached?
+        div class: "uploaded-file" do
+            div do
+              if company_information.medias.variable?
+                span image_tag(company_information.medias, size: '100x100')
+              elsif company_information.medias.previewable?
+                span image_tag(company_information.medias.preview(resize: '100x100')) 
+              end
+              div link_to 'delete', delete_media_admin_tour_path(company_information.medias.id), method: :delete, data: { confirm: 'Are you sure?' }
+            end
+        end
+      end
     f.actions
   end
 
@@ -65,6 +80,17 @@ ActiveAdmin.register CompanyInformation do
         row :whatsapp_link
         row :created_at
         row :updated_at
+        row :medias do
+          div do
+              span do
+                if company_information.medias.image?
+                  image_tag url_for(company_information.medias), size: '200x200'
+                else
+                  video_tag url_for(company_information.medias), size: '200x200', controls: ''
+                end
+            end
+          end
+        end
       end
       active_admin_comments
     end

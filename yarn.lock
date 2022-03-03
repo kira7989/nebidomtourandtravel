@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+"material-design-icons-iconfont@^6.4.2":
+  "integrity" "sha512-MLbuHqK9c99SJb48rEnWpMm+VR4WNT7atQiyGkvQqDzx1Aw24dCjDTyX5aN8WruCHdS7XtNgRMCrsiN5lPRjyQ=="
+  "resolved" "https://registry.npmjs.org/material-design-icons-iconfont/-/material-design-icons-iconfont-6.4.2.tgz"
+  "version" "6.4.2"

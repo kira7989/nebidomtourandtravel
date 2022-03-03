@@ -1,3 +1,3 @@
 module PagesHelper
-	@company_information = CompanyInformation.first
+	# @company_information = CompanyInformation.first
 end

@@ -1,5 +1,7 @@
 {
   "name": "nebidomtourandtravel",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "material-design-icons-iconfont": "^6.4.2"
+  }
 }
