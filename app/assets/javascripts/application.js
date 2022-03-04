@@ -89,6 +89,23 @@ $(document).on('turbolinks:load', function(){
 
 
 	"use strict";
+	mybutton = document.getElementById("myBtn");
+	window.onscroll = function () { scrollFunction() };
+	var btn = document.getElementById("myBtn");
+	btn.addEventListener("click", function() {
+		//Do something here
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}, false);
+
+	function scrollFunction() {
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+	} else {
+		mybutton.style.display = "none";
+	}
+	}
+
 
 	var isMobile = {
 		Android: function() {
