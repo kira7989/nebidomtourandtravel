@@ -6,8 +6,6 @@ class ToursController < ApplicationController
     # @tours = Tour.all
     @search = Tour.search(params[:q])
     @tours = @search.result.order("created_at DESC").page(params[:page]) 
-    @featured_tours=Tour.where(tour_display_on_homepage_priority: ["High","Medium"])
-    @other_tours=Tour.where(tour_display_on_homepage_priority: "Low")
   end
 
   # GET /tours/1 or /tours/1.json

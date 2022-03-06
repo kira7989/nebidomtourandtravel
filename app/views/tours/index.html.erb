@@ -102,9 +102,9 @@
       </div>
     </div> -->
     <div class="container mt-5">
-      <h2>Featured Tours</h2>
+      <h2>Our Tours</h2>
       <div class="row">
-        <%@featured_tours.each do |tour|%>
+        <%@tours.each do |tour|%>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
           <div class="card ">
             <a  class="unit-1 text-center">
@@ -149,52 +149,13 @@
           </div>
         <%end%>
       </div>
-    </div>
-    <div class="container mt-5 ">
-      <h2>Other Tours</h2>
-      <div class="row">
-        <%@other_tours.each do |tour|%>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-          <div class="card">
-            <a class="unit-1 text-center">
-              <% if tour.medias.attached? %>
-                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <%= image_tag tour.medias[0], :class => "img-fluid" %>
-                    </div>
-                    <% tour.medias.drop(1).each do |illustration| %>
-                      <div class="carousel-item">
-                        <%= image_tag(illustration, :class => "img-fluid") %>
-                      </div>
-                    <%end%>
-                  </div>
-                </div>
-              <%end%>
-            </a>
-            <div class="text p-3">
-              <div class="d-flex">
-                <div class="one">
-                  <h3 class="card-title text-capitalize"><%= link_to tour.tour_title, tour_path(tour)%></h3>
-                  <div class="group-sm group-middle justify-content-start mt-0">
-                                    <p class="font-weight-bold mt-0"><span><i class="icon-map-o"></i> <%= tour.destination.city.html_safe%>, <%= tour.destination.country.html_safe%></span></p>
-
-                    <div class="product-big-rating "><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div>
-                    <a class="product-big-reviews" href="#"><%= Random.rand(50...100) %> customer reviews</a>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-1"><%= tour.desciption.truncate(256).html_safe%></p>
-            <p class="days"><span><%= tour.tour_duration.html_safe%></span></p>
-            <hr>
-            <p class="bottom-area d-flex">
-              <span  class="font-weight-bold btn">$<%= tour.tour_price_range.html_safe%></span>
-              <span class="ml-auto"><%= link_to "Book Now", tour_path(tour), class: "btn"%></span>
-            </p>
-          </div>
-          </div>
-        </div>
-      <%end%>
+            <%# <div class="row mt-5">
+        <div class="col text-center">
+          <div class="block-27">
+            <%= paginate @tours %> 
+            <%# <%= page_entries_info @tours %>
+          <%# </div>
+        </div>   %>
     </div>
   </div>
 </div>
