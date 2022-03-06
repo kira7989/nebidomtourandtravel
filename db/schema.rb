@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_092027) do
+ActiveRecord::Schema.define(version: 2022_03_06_130346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_092027) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.bigint "package_id"
+    t.bigint "package_id", default: 0
     t.string "customer_full_name"
     t.string "email"
     t.string "phone_number"
@@ -103,6 +103,9 @@ ActiveRecord::Schema.define(version: 2021_05_06_092027) do
     t.string "why_choose_us"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_destinations"
+    t.integer "number_of_tours"
+    t.integer "number_of_staff_members"
   end
 
   create_table "contacts", force: :cascade do |t|

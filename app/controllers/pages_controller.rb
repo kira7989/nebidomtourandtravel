@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
     @company_information = CompanyInformation.first
   	@services = Service.all
-  	@destinations = Destination.all
+  	@destinations = Destination.all.limit(3)
   	@tours = Tour.all
     @home_tour=Tour.where(tour_display_on_homepage_priority: "High").limit(3)
   	@packages = Package.all

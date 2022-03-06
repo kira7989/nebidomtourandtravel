@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env.development?
-  AdminUser.create!(full_name: (ENV['FULLNAME']).to_s, email: (ENV['ADMIN_EMAIL']).to_s, password: (ENV['SEED_PASSWORD']).to_s, password_confirmation: (ENV['SEED_PASSWORD']).to_s)
+  AdminUser.create!(full_name: "kirubel", email: "test@gmail.com", password: "password", password_confirmation: "password")
 end
 
 if Rails.env.production?

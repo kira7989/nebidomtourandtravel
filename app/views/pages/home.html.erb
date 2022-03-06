@@ -12,13 +12,13 @@
         <p><a href="/tours" class="btn btn-primary py-3 px-5 ">Book Now!</a></p>
       </div>
     </div>
-    <div class="carousel-item parallax" style="background-image: url('<%= asset_path("Bale.jpg")%>'); height:600px;">
+    <div class="carousel-item parallax " style="background-image: url('<%= asset_path("Bale.jpg")%>'); height:600px;">
       <%# <img class="d-block w-100" src="assets/Bale.jpg" alt="Second slide" style="max-height:500px; object-fit: cover;"> %>
-      <div class="carousel-caption d-none d-md-block col-md-8" data-aos="fade-up" data-aos-delay="400">
+      <div class="carousel-caption d-none d-md-block col-md-8 " data-aos="fade-up" data-aos-delay="400">
         <h1 class="text-white font-weight-light">Love The Places</h1>
         <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga est inventore ducimus
           repudiandae.</p>
-        <p><a href="#" class="btn btn-primary py-3 px-5">Book Now!</a></p>
+        <p><a href="/tours" class="btn btn-primary py-3 px-5">Book Now!</a></p>
       </div>
     </div>
     <div class="carousel-item parallax" style="background-image: url('<%= asset_path("Lalibela2.jpg")%>');  height:600px;">
@@ -27,7 +27,7 @@
         <h1 class="text-white font-weight-light">Love The Places</h1>
         <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga est inventore ducimus
           repudiandae.</p>
-        <p><a href="#" class="btn btn-primary py-3 px-5 ">Book Now!</a></p>
+        <p><a href="/tours" class="btn btn-primary py-3 px-5 ">Book Now!</a></p>
       </div>
     </div>
   </div>
@@ -42,17 +42,17 @@
 </div>
 <!-- end of hero slider -->
 <!-- Section Box Categories-->
-<section class="section section-lg section-top-1 bg-gray-4">
+<section class="section section-lg section-top-1 bg-gray-4 pt-0" style="margin-top:-30px;">
   <div class="container offset-negative-1">
     <div class="box-categories cta-box-wrap">
       <div class="box-categories-content">
         <div class="row justify-content-center">
-          <% @home_tour.each do |tour|%>
+          <% @destinations.each do |destination|%>
             <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
               <ul class="list-marked-2 box-categories-list">
                 <li>
-                  <a href="<%= tour_path(tour) %>"><%= image_tag tour.medias[0],class:"img-fluid", style:"height:420px"%></a>
-                  <h5 class="box-categories-title"><%= tour.tour_title %></h5>
+                  <a href="<%= destination_path(destination) %>"><%= image_tag destination.medias[0],class:"img-fluid", style:"height:420px"%></a>
+                  <h5 class="box-categories-title"><%= link_to destination.destination_name, destination_path(destination)%>, <%= destination.country%></h5>
                 </li>
               </ul>
             </div>
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <a class="link-classic wow fadeInUp" href="/tours">Other Tours<span></span></a>
+    <a class="link-classic wow fadeInUp " href="/destinations">Other Destinations<span></span></a>
     <!-- Owl Carousel-->
   </div>
 </section>

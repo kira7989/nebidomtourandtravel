@@ -1,6 +1,6 @@
 ActiveAdmin.register CompanyInformation do
 
-  permit_params :company_name,:about_us,:mission,:vision,:facebook_link,:tiktok_link,:instagram_link,:youtube_link,:telegram_link,:whatsapp_link,:address,:alternative_address,:phone_number,:alternative_phone_number,:map_embed_link,:email,:why_choose_us, :medias
+  permit_params :company_name,:about_us,:mission,:vision,:facebook_link,:tiktok_link,:instagram_link,:youtube_link,:telegram_link,:whatsapp_link,:address,:alternative_address,:phone_number,:alternative_phone_number,:map_embed_link,:email,:why_choose_us, :medias, :number_of_staff_members, :number_of_destinations, :number_of_tours
   
   # actions :index, :show, :update, :edit
   index do
@@ -23,6 +23,9 @@ ActiveAdmin.register CompanyInformation do
       f.input :about_us
       f.input :mission
       f.input :vision
+      f.input :number_of_destinations
+      f.input :number_of_tours
+      f.input :number_of_staff_members
       f.input :why_choose_us
       f.input :phone_number
       f.input :alternative_phone_number
@@ -78,6 +81,9 @@ ActiveAdmin.register CompanyInformation do
         row :youtube_link
         row :telegram_link
         row :whatsapp_link
+        row :number_of_destinations
+        row :number_of_tours
+        row :number_of_staff_members
         row :created_at
         row :updated_at
         row :medias do
