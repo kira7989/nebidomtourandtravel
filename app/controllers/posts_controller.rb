@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   def index
     @search = Post.search(params[:q])
     @posts = @search.result.order("created_at DESC").page(params[:page])
-    @news=Post.where(post_type: "news").order("created_at DESC")
-    @blogs=Post.where(post_type: "blog").order("created_at DESC")
+    @news=Post.where(post_type: "news").order("created_at DESC").page(params[:page])
+    @blogs=Post.where(post_type: "blog").order("created_at DESC").page(params[:page])
   end
 
   # GET /posts/1 or /posts/1.json
